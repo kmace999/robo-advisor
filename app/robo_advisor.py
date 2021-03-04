@@ -41,4 +41,35 @@ while entering:
             print("Please try again.")
 
         elif len(ticker) > 0 and len(ticker) <= 5:
+            ticker = ticker.upper()
             searchtickers.append(ticker)
+
+
+
+#API key# API_KEY = os.getenv("ALPHAVANTAGE_API_KEY")
+#API_KEY = "abc123"
+#API_KEY = getpass("Please input your API key:")
+
+
+
+import os
+from getpass import getpass
+from dotenv import load_dotenv
+#https://github.com/theskumar/python-dotenv
+
+load_dotenv()
+
+APIKEY = os.getenv("USER_NAME", default="Player One")
+
+
+
+#fetching data
+
+
+import requests
+import json
+
+for symbol in searchtickers:
+    request_url = f"https://www.alphavantage.co/query?function=TIME_SERIES_DAILY&symbol={symbol}&apikey={API_KEY}"
+    response = requests.get(request_url)
+    parsed_response = json.loads(response.text)
