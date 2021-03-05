@@ -44,12 +44,8 @@ while entering:
             ticker = ticker.upper()
             searchtickers.append(ticker)
 
-
-
-#API key# API_KEY = os.getenv("ALPHAVANTAGE_API_KEY")
-#API_KEY = "abc123"
-#API_KEY = getpass("Please input your API key:")
-
+#THIS CODE IS FROM THE CLASS COLAB FOR THIS ROBO-ADVISOR project
+#https://colab.research.google.com/drive/1EH3xNXPrO4dniIW12X9ATDz1lMyMBREb?usp=sharing#scrollTo=LY1po1fUMtW8
 
 
 import os
@@ -58,9 +54,10 @@ from dotenv import load_dotenv
 #https://github.com/theskumar/python-dotenv
 
 load_dotenv()
-
-APIKEY = os.getenv("USER_NAME", default="Player One")
-
+#API key
+API_KEY = os.getenv("ALPHAVANTAGE_API_KEY")
+#API_KEY = "abc123"
+#API_KEY = getpass("Please input your API key:")
 
 
 #fetching data
@@ -68,8 +65,22 @@ APIKEY = os.getenv("USER_NAME", default="Player One")
 
 import requests
 import json
-
+records = []
 for symbol in searchtickers:
     request_url = f"https://www.alphavantage.co/query?function=TIME_SERIES_DAILY&symbol={symbol}&apikey={API_KEY}"
     response = requests.get(request_url)
     parsed_response = json.loads(response.text)
+
+
+    for date, daily_data in parsed_response["Time Series (Daily)"].items():
+
+        record = {
+            "date": date,
+            "open": float(daily_data["1. open"]),
+            "high": float(daily_data["2. high"]),
+            "low": float(daily_data["3. low"]),
+            "close": float(daily_data["4. close"]),
+            "volume": int(daily_data["5. volume"]),
+        }
+        records.append(record)
+#END CODE FROM CLASS COLAB
