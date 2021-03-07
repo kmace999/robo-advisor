@@ -1,6 +1,6 @@
 # robo-advisor
 
-#Customizing your API key or something 
+#Customizing your API key or something
 
 Create a new file called ".env"
 
@@ -13,3 +13,6 @@ atom .env
 and enter your chosen username.
 
 USER_NAME = "Remy Ratatouille"
+
+
+ENV USERNAME BEFORE RUNNING THE THING 
