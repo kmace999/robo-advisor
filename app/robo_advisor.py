@@ -68,34 +68,40 @@ while addmore:
     records = []
 
     request_url = f"https://www.alphavantage.co/query?function=TIME_SERIES_DAILY&symbol={ticker}&apikey={API_KEY}"
-    response = requests.get(request_url)
-    parsed_response = json.loads(response.text)
 
+    try:
 
-    for date, daily_data in parsed_response["Time Series (Daily)"].items():
+        response = requests.get(request_url)
+        parsed_response = json.loads(response.text)
 
-        record = {
-            "date": date,
-            "open": float(daily_data["1. open"]),
-            "high": float(daily_data["2. high"]),
-            "low": float(daily_data["3. low"]),
-            "close": float(daily_data["4. close"]),
-            "volume": int(daily_data["5. volume"]),
-        }
-        records.append(record)
+        for date, daily_data in parsed_response["Time Series (Daily)"].items():
 
-    #END CODE FROM CLASS COLAB
+            record = {
+                "date": date,
+                "open": float(daily_data["1. open"]),
+                "high": float(daily_data["2. high"]),
+                "low": float(daily_data["3. low"]),
+                "close": float(daily_data["4. close"]),
+                "volume": int(daily_data["5. volume"]),
+            }
+            records.append(record)
 
-    from pandas import DataFrame
+        #END CODE FROM CLASS COLAB
 
-    dfrecords = DataFrame(records)
-    print(dfrecords)
+        from pandas import DataFrame
 
-    morestocks = input("Do you wish to receive advice on another stock or cryptocurrency? ['yes'/'no']:")
-    if morestocks != "yes" and morestocks !="no":
-        print("Please enter either 'yes' or 'no'.")
-    elif morestocks == "no":
-        addmore = False
-        print("Thank you for using the Robo Advisor!")
-    elif morestocks == "yes":
+        dfrecords = DataFrame(records)
+        print(dfrecords)
+
+        morestocks = input("Do you wish to receive advice on another stock or cryptocurrency? ['yes'/'no']:")
+        if morestocks != "yes" and morestocks !="no":
+            print("Please enter either 'yes' or 'no'.")
+        elif morestocks == "no":
+            addmore = False
+            print("Thank you for using the Robo Advisor!")
+        elif morestocks == "yes":
+            entering = True
+
+    except:
+        print("Oops, that stock symbol was not found. Please try again.")
         entering = True
