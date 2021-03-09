@@ -2,6 +2,8 @@
 addmore = True
 entering = True
 
+import seaborn as sns
+
 #start copied function from past project readme setups
 def to_usd(my_price):
     """
@@ -110,31 +112,19 @@ while addmore:
     print(f"LATEST DATA FROM: {latestdata[0]}")
     latestclose = dfrecords["close"].values
     print(f"LATEST CLOSE: {to_usd(latestclose[0])}")
-    #recenthigh =
-    print(f"RECENT HIGH: ")
-    #recentlow =
-    print(f"RECENT LOW: ")
+    recenthigh = dfrecords["high"].max()
+    print(f"RECENT HIGH: {to_usd(recenthigh)}")
+    recentlow = dfrecords["low"].min()
+    print(f"RECENT LOW: {to_usd(recentlow)}")
     print("-------------------------")
+    print("RECOMMENDATION: ")
+    print("EXPLANATION: ")
+    print("-------------------------")
+    print("HAPPY INVESTING :)")
+    print("")
 
 
-
-
-
-
-# print("LATEST CLOSE: $100,000.00")
-# print("RECENT HIGH: $101,000.00")
-# print("RECENT LOW: $99,000.00")
-# print("-------------------------")
-# print("RECOMMENDATION: BUY!")
-# print("RECOMMENDATION REASON: TODO")
-# print("-------------------------")
-# print("HAPPY INVESTING!")
-# print("-------------------------")
-
-
-
-
-
+    #sns.lineplot(data=dfrecords, x="date", y="close")
 
 
     moredatavalidation = True
