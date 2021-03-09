@@ -1,23 +1,21 @@
-# print("-------------------------")
-# print("SELECTED SYMBOL: XYZ")
-# print("-------------------------")
-# print("REQUESTING STOCK MARKET DATA...")
-# print("REQUEST AT: 2018-02-20 02:00pm")
-# print("-------------------------")
-# print("LATEST DAY: 2018-02-20")
-# print("LATEST CLOSE: $100,000.00")
-# print("RECENT HIGH: $101,000.00")
-# print("RECENT LOW: $99,000.00")
-# print("-------------------------")
-# print("RECOMMENDATION: BUY!")
-# print("RECOMMENDATION REASON: TODO")
-# print("-------------------------")
-# print("HAPPY INVESTING!")
-# print("-------------------------")
-
 
 addmore = True
 entering = True
+
+#start copied function from past project readme setups
+def to_usd(my_price):
+    """
+    Converts a numeric value to usd-formatted string, for printing and display purposes.
+
+    Param: my_price (int or float) like 4000.444444
+
+    Example: to_usd(4000.444444)
+
+    Returns: $4,000.44
+    """
+    return f"${my_price:,.2f}" #> $12,000.71
+
+#end copied function from past project readme setups
 
 
 while addmore:
@@ -91,6 +89,7 @@ while addmore:
 
     #END CODE FROM CLASS COLAB
 
+    import pandas as pd
     from pandas import DataFrame
 
     dfrecords = DataFrame(records)
@@ -99,12 +98,29 @@ while addmore:
     dfrecords.to_csv('data/prices.csv', index = False)
 
 
+    from datetime import datetime
+    thisday = datetime.now()
+    requestdate = thisday.strftime("%m/%d/%Y %H:%M")
+
+
+    print("-------------------------")
+    print(f"ADVICE REQUESTED AT: {requestdate}")
+    print("-------------------------")
+    latestdata = dfrecords["date"].values
+    print(f"LATEST DATA FROM: {latestdata[0]}")
+    latestclose = dfrecords["close"].values
+    print(f"LATEST CLOSE: {to_usd(latestclose[0])}")
+    #recenthigh =
+    print(f"RECENT HIGH: ")
+    #recentlow =
+    print(f"RECENT LOW: ")
+    print("-------------------------")
 
 
 
-# print("REQUEST AT: 2018-02-20 02:00pm")
-# print("-------------------------")
-# print("LATEST DAY: 2018-02-20")
+
+
+
 # print("LATEST CLOSE: $100,000.00")
 # print("RECENT HIGH: $101,000.00")
 # print("RECENT LOW: $99,000.00")
@@ -121,14 +137,18 @@ while addmore:
 
 
 
-    morestocks = input("Do you wish to receive advice on another stock or cryptocurrency? ['yes'/'no']:")
-    if morestocks != "yes" and morestocks !="no":
-        print("Please enter either 'yes' or 'no'.")
-    elif morestocks == "no":
-        addmore = False
-        print("Thank you for using the Robo Advisor!")
-    elif morestocks == "yes":
-        entering = True
+    moredatavalidation = True
+    while moredatavalidation:
+        morestocks = input("Do you wish to receive advice on another stock or cryptocurrency? ['yes'/'no']:")
+        if morestocks == "no":
+            addmore = False
+            moredatavalidation = False
+            print("Thank you for using the Robo Advisor!")
+        elif morestocks == "yes":
+            entering = True
+            moredatavalidation = False
+        elif morestocks != "yes" and morestocks !="no":
+            print("Please enter either 'yes' or 'no'.")
 
 
 
