@@ -2,7 +2,6 @@
 addmore = True
 entering = True
 
-#import seaborn as sns
 
 #start copied function from past project readme setups
 def to_usd(my_price):
@@ -95,7 +94,6 @@ while addmore:
         from pandas import DataFrame
 
         dfrecords = DataFrame(records)
-        #print(dfrecords)
 
         dfrecords.to_csv('data/prices.csv', index = False)
 
@@ -170,7 +168,6 @@ while addmore:
         print("")
 
 
-        #sns.lineplot(data=dfrecords, x="date", y="close")
 
 
         moredatavalidation = True
@@ -189,7 +186,6 @@ while addmore:
 
 
 
-#UNCOMMENT THESE BEFORE YOU TURN IN!!!!!!!
     except:
         print("Oops, that stock symbol was not found. Please try again.")
         entering = True
