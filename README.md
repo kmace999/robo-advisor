@@ -1,5 +1,6 @@
 # robo-advisor
 Navigate to the robo-advisor repository from your local GitHub Desktop client in the command line [ex: Git Bash, Command Prompt, etc.] after cloning it from [this remote GitHub repo](https://github.com/kmace999/robo-advisor). The below code is an example, so make sure it reflects your depository's unique address.
+
 `cd ~/Desktop/GitHub/robo-advisor`
 
 ## Setting up the advisor environment
@@ -27,15 +28,19 @@ atom .env
 
 and enter your chosen username.
 
-ALPHAVANTAGE_API_KEY = "abc123"
+`ALPHAVANTAGE_API_KEY = "abc123"``
 
-## Running the robo advisor
+## Running the robo advisor program
 To run the robo advisor program, run the below code, and follow the in-program instructions.
 
 `python robo_advisor.py`
 
+### Tips for running the robo advisor program
+- Make sure the symbol for the chosen stock/cryptocurrency is accurate and exists
+- Use the exact prompted responses to in-program questions (e.g. "Do you wish to receive advice on another stock or cryptocurrency? ['yes'/'no']:" = yes OR no NOT another symbol)
+- Data used in the recommendation algorithm can be accessed in the app/data/prices.csv file after the program is run for one symbol
 
-
+Happy investing!
 
 # Files included
 - README.md
