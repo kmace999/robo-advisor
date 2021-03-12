@@ -28,7 +28,7 @@ atom .env
 
 and enter your chosen username.
 
-`ALPHAVANTAGE_API_KEY = "abc123"``
+`ALPHAVANTAGE_API_KEY = "abc123"`
 
 ## Running the robo advisor program
 To run the robo advisor program, run the below code, and follow the in-program instructions.
@@ -40,7 +40,7 @@ To run the robo advisor program, run the below code, and follow the in-program i
 - Use the exact prompted responses to in-program questions (e.g. "Do you wish to receive advice on another stock or cryptocurrency? ['yes'/'no']:" = yes OR no NOT another symbol)
 - Data used in the recommendation algorithm can be accessed in the app/data/prices.csv file after the program is run for one symbol
 
-Happy investing!
+## Happy investing!
 
 # Files included
 - README.md
