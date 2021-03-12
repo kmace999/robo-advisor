@@ -3,5 +3,3 @@
 requests
 python-dotenv
 pandas
-json
-os
