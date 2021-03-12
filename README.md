@@ -22,7 +22,7 @@ Create a new file called ".env"
 
 `> .env`
 
-The required package for this advisor python-dotenv allows the user to enter their API key that will allow the advisor to issue requests to the AlphaVantage API. User security is a priority, and this sensitive key will only be used to access the user requested information, and it will not be displayed in the advisor outputs. To change enter an API key, open the new .env file in your text editor (example below),
+The required package for this advisor python-dotenv allows the user to enter their API key that will allow the advisor to issue requests to the AlphaVantage API. User security is a priority, and this sensitive key will only be used to access the user requested information, and it will not be displayed in the advisor outputs. To enter an API key, open the new .env file in your text editor (example below),
 
 atom .env
 
